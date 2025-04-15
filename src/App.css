@@ -1,7 +1,7 @@
 body{
     padding: 0;
     margin:0;
-    overflow: hidden;
+    /* overflow: hidden; */
     font-family: 'Roboto';
 }
 
@@ -93,4 +93,39 @@ body{
 
 .app-container{
     display: flex;
+}
+
+.hourly-forecast-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 20px;
+}
+
+.hourly-forecast-card{
+    border: 1px solid #1a202e;
+    border-radius: 15px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a202e ;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.weather-highlight-card{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    color: white;
+}
+
+.highlight-card{
+    background-color: #1a202e;
+    border-radius: 15px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
