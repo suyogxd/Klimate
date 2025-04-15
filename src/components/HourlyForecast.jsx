@@ -1,10 +1,11 @@
 import React from 'react'
+import '../styles/HourlyForecast.css'
 
 const HourlyForecast = ({forecast}) => {
 
     const dateTime = new Date(forecast.dt_txt)
-    const day = dateTime.toLocaleDateString('en-US', {weekday: 'short'})
-    const time = dateTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})
+    const day = dateTime.toLocaleDateString([], {weekday: 'short'})
+    const time = dateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})
 
     const iconUrl = `https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`;
     const description = forecast?.weather[0]?.description;

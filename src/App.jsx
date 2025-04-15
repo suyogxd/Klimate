@@ -3,7 +3,7 @@ import './App.css'
 import Header from './components/Header'
 import Navbar from './components/Navbar'
 import MainWeather from './components/MainWeather'
-import TodayHighlights from './components/TodayHighlights'
+import TodayHighlights from './components/TodayForecast'
 
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null)
   const [city, setCity] = useState('London')
   const [airQualityData, setAirQualityData] = useState(null)
-  const [fiveDayForecast, setFiveDayForecast] = useState(null)
+  const [hourlyForecast, setHourlyForecast] = useState(null)
 
   useEffect(() => {
     fetchWeatherData(city)
@@ -20,11 +20,11 @@ function App() {
   
   const fetchAirQualityData = (lat, lon) => {
     const APIKey = import.meta.env.VITE_API_KEY
-    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?q=${lat}&lon=${lon}&appid=${APIKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${APIKey}`)
     .then(res => res.json())
     .then(data => {
       setAirQualityData(data.list[0])
-      console.log(JSON.stringify(data.list[0]))
+      console.log("AQI Data:", data.list[0])
     })
     .catch(err => console.log('Error fetching Air Quality Data', err))
   }
@@ -37,16 +37,14 @@ function App() {
       setWeatherData(weatherJson)
       console.log(JSON.stringify(weatherJson))
       const {lat, lon} = weatherJson.coord
+      fetchAirQualityData(lat, lon)
 
       const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
       const forecastJson = await forecastRes.json() 
-      setFiveDayForecast(forecastJson.list)
-      console.log(forecastJson.list)
-      // fetchAirQualityData(data.coord.lat, data.coord.lon)
-      // fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
-      // .then(res => {
-      //   setFiveDayForecast(res.data);
-      // })
+
+      setHourlyForecast(forecastJson.list.slice(0, 8))
+      console.log(forecastJson.list.slice(0, 8));
+
     }
     catch(err){
       console.log('Error fetching Weather Data', err)
@@ -66,7 +64,7 @@ function App() {
           <MainWeather weatherData={weatherData} />
         </div>
         <div className='today-and-highlights-container'>
-          <TodayHighlights hourlyForecast={fiveDayForecast} weatherData={weatherData} airQualityData={airQualityData}/>
+          <TodayHighlights hourlyForecast={hourlyForecast} weatherData={weatherData} airQualityData={airQualityData}/>
         </div>
       </div>
       

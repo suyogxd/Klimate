@@ -1,5 +1,6 @@
 import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import '../styles/MainWeather.css'
 
 const MainWeather = ({weatherData, airQualityData}) => {
 

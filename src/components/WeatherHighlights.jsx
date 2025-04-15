@@ -23,7 +23,7 @@ const WeatherHighlights = ({ weatherData, airQualityData }) => {
   const highlightCard = (title, value, icon) => (
     <div className='highlight-card'>
       <div style={{paddingBottom: '15px', fontSize: '1.1rem', fontWeight: '400'}}>{title}</div>
-      <div style={{paddingBottom: '15px'}} className='highlight-value'>{value}</div>
+      <div style={{paddingBottom: '15px'}}>{value}</div>
       <div>{icon}</div>
     </div>
   );
@@ -34,6 +34,7 @@ const WeatherHighlights = ({ weatherData, airQualityData }) => {
       {highlightCard("Wind Speed", <img src='./assets/windspeed.svg' alt="Wind Speed" style={{height: '60px', width: '60px'}} />, `${windSpeed} m/s`)}
       {highlightCard("Sunrise", <img src='./assets/sunrise.svg' alt="Sunrise" style={{height: '60px', width: '60px'}} />, `${sunrise}`)}
       {highlightCard("Sunset", <img src='./assets/sunset.svg' alt="Sunset" style={{height: '60px', width: '60px'}} />, `${sunset}`)}
+      {highlightCard("Air Quality",  <img src='./assets/aqi-icon.svg' alt="Air Quality" style={{height: '60px', width: '60px'}} />, getAQIText(airQualityIndex))}
     </div>
 
   );

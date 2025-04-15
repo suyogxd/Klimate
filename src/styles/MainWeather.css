@@ -1,0 +1,25 @@
+.weather-icon-container {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .weather-description {
+    text-transform: capitalize;
+    font-size: 18px;
+  }
+  
+  .weather-icon {
+    height: 250px;
+    width: 250px;
+  }
+  
+  @media (max-width: 768px) {
+    .weather-icon {
+      height: 150px;
+      width: 150px;
+    }
+  }
+  

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import GpsFixedOutlinedIcon from '@mui/icons-material/GpsFixedOutlined';
+import '../styles/Navbar.css'
 
 function Navbar({onSearch}) {
 
@@ -34,9 +34,6 @@ function Navbar({onSearch}) {
             fontSize='small'
             onClick={handleSearchClick}
             />
-            <GpsFixedOutlinedIcon variant="outlined"
-            className='gps-icon' fontSize='small'/>
-
         </div>
     </nav>
   )
