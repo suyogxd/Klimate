@@ -1,12 +1,11 @@
 .header {
-    background-color: #272727;
-    color: white;
-    padding: 12px 12px;
+    background-color: #1a202e;
+    color: #8CA5BA;
+    padding: 12px 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 40px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    justify-content: end;
+    height: 20px;
 }
   
 .appname-header {
@@ -19,13 +18,13 @@
 }
   
 .app-icon {
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
 }
   
 @media (max-width: 480px) {
     .header {
-        padding: 10px 16px;
+        padding: 10px 18px;
         height: 50px;
     }
 
@@ -35,8 +34,8 @@
     }
 
     .app-icon {
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
     }
 }
   

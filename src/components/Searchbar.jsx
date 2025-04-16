@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import '../styles/Navbar.css'
+import '../styles/Searchbar.css'
 
-function Navbar({onSearch}) {
+function Searchbar({onSearch}) {
 
     const [searchCity, setSearchCity] = useState('')
 
@@ -18,11 +18,12 @@ function Navbar({onSearch}) {
             placeholder="Search City" 
             variant="outlined" 
             size="small"
-            style={{width: '14rem', color: 'white', border: '1px solid white', borderRadius: '5px'}}
+            style={{width: '15rem', color: 'white', border: '1px solid white', borderRadius: '5px'}}
             sx= {{
                 '& .MuiInputBase-input': {
-                    paddingLeft: '50px',
-                    color: 'white'
+                    paddingLeft: '20px',
+                    paddingRight: '50px',
+                    color: 'white',
                 }
             }}
             value={searchCity}
@@ -39,4 +40,4 @@ function Navbar({onSearch}) {
   )
 }
 
-export default Navbar
+export default Searchbar

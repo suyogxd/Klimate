@@ -6,6 +6,11 @@
     justify-content: center;
   }
   
+  .divider{
+    border: 1px solid #828282;
+    width: 100%;
+  }
+
   .weather-description {
     text-transform: capitalize;
     font-size: 18px;
@@ -14,12 +19,13 @@
   .weather-icon {
     height: 250px;
     width: 250px;
+    padding-left: 55px;
   }
   
   @media (max-width: 768px) {
     .weather-icon {
-      height: 150px;
-      width: 150px;
+      height: 250px;
+      width: 250px;
     }
   }
   

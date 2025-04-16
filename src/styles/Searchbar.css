@@ -1,0 +1,41 @@
+.navbar {
+    padding: 8px 20px;
+    display: flex;
+  }
+  
+.nav-and-main-weather-container {
+  background-color: #1a202e;
+  height: 100vh;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+  
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #42bdff;
+  background-color: #42bdff;
+  border: none;
+  border-radius: 50%;
+  padding:4px;
+  font-weight: bold;
+}
+
+.search-icon:hover{
+  border: 1px solid #3690cc;
+  border-radius: 50%;
+  padding:4px;
+  background-color:#3690cc;
+}

@@ -22,9 +22,9 @@ const WeatherHighlights = ({ weatherData, airQualityData }) => {
 
   const highlightCard = (title, value, icon) => (
     <div className='highlight-card'>
-      <div style={{paddingBottom: '15px', fontSize: '1.1rem', fontWeight: '400'}}>{title}</div>
+      <div style={{paddingBottom: '15px', fontSize: '1.1rem', fontWeight: '400', color: '#D9F7FA'}}>{title}</div>
       <div style={{paddingBottom: '15px'}}>{value}</div>
-      <div>{icon}</div>
+      <div style={{color: '#D9F7FA'}}>{icon}</div>
     </div>
   );
 

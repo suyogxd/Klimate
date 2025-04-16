@@ -2,7 +2,7 @@ import React from 'react'
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import '../styles/MainWeather.css'
 
-const MainWeather = ({weatherData, airQualityData}) => {
+const MainWeather = ({weatherData}) => {
 
     const temperature = weatherData?.main?.temp || 'N/A'
     const weatherIconUrl = `https://openweathermap.org/img/wn/${weatherData?.weather?.[0]?.icon}@4x.png`
@@ -16,12 +16,11 @@ const MainWeather = ({weatherData, airQualityData}) => {
         day: 'numeric',
         month: 'short',
     }): "Date not available"
-    // const airQuality = airQualityData?.main?.
 
   return (
     <div 
         style={{ 
-            color: "white",
+            color: "#D9F7FA",
             padding: '20px',
             paddingTop: '60px',
             display: 'flex',
@@ -42,10 +41,11 @@ const MainWeather = ({weatherData, airQualityData}) => {
                 display: 'flex', 
                 aslignItems: 'center', 
                 fontSize: '69px', 
-                fontWeight: '400',
+                fontWeight: '500',
                 paddingTop: '60px',
+                color: '#257fc4'
             }}>
-                {temperature} <span style={{ fontSize: '0.5em', verticalAlign: 'super'}}>°C</span>
+                {temperature} <span style={{ fontSize: '0.4em', verticalAlign: 'super'}}>°C</span>
         </div>
         <div style={{display: 'flex', flexDirection: 'column', gap: '15px', paddingLeft: '5px'}}>
             <div style={{color: '#999999', fontWeight: '500', fontSize: '13px'}}>Feels like {feelsLike}<span style={{ fontSize: '0.7em', verticalAlign: 'super'}}>°C</span></div>

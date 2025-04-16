@@ -14,10 +14,10 @@ const HourlyForecast = ({forecast}) => {
     <>
         <div className='hourly-forecast-card'>
             <div className='hourly-forecast-day'>
-                <span>{day},</span> &nbsp;
+                <span style={{color: '#D9F7FA'}}>{day},</span> &nbsp;
                 <span style={{color: 'rgb(153,153,153'}}>{time}</span>
             </div>
-            <img src={iconUrl} alt="Weather Icon" style={{height: '100px', width: '100px'}}/>
+            <img src={iconUrl} alt="Weather Icon" draggable="false" style={{height: '100px', width: '100px'}}/>
             <div className='hourly-forecast-description' style={{color: 'rgb(153,153,153', paddingBottom: '10px', textTransform: 'capitalize'}}>{description}</div>
             <div className='hourly-forecast-temp'>
                 {temperature}

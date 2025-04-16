@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header'
-import Navbar from './components/Navbar'
+import Searchbar from './components/Searchbar'
 import MainWeather from './components/MainWeather'
-import TodayHighlights from './components/TodayForecast'
+import TodayForecast from './components/TodayForecast'
 
 
 function App() {
@@ -60,11 +60,11 @@ function App() {
       <Header />
       <div className='app-container'>
         <div className='nav-and-main-weather-container'>
-          <Navbar onSearch={handleSearch}/>
+          <Searchbar onSearch={handleSearch}/>
           <MainWeather weatherData={weatherData} />
         </div>
         <div className='today-and-highlights-container'>
-          <TodayHighlights hourlyForecast={hourlyForecast} weatherData={weatherData} airQualityData={airQualityData}/>
+          <TodayForecast hourlyForecast={hourlyForecast} weatherData={weatherData} airQualityData={airQualityData}/>
         </div>
       </div>
       
