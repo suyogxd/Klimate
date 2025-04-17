@@ -20,6 +20,7 @@ html,body, #root {
     flex-direction: column;
     flex: 1;
     align-items: center;
+    min-width: 330px;;
 }
 
 .today-and-highlights-container {
@@ -69,12 +70,31 @@ html,body, #root {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    html, body {
+      overflow:auto;
+      height:auto;
+    }
     .app-container {
-        flex-direction: column;
+      flex-direction: column;
+      overflow: visible;
+      height:auto;
+    }
+  
+    .nav-and-main-weather-container,
+    .today-and-highlights-container {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+      overflow: visible;
+      height: auto;
     }
 
-    .nav-and-main-weather-container {
-        align-items: center;
+    .today-and-highlights-container{
+        height: auto;
     }
-}
+
+    .today-and-highlights-container::-webkit-scrollbar {
+        display: none; 
+    }
+  }
