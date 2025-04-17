@@ -26,7 +26,7 @@ const MainWeather = ({weatherData}) => {
             display: 'flex',
             flexDirection: 'column',
             
-        }}>
+        }} className='main-weather-container'>
         
         <div className='weather-icon-container' >
             <img

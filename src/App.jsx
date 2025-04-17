@@ -12,10 +12,10 @@ function App() {
   const [city, setCity] = useState('London')
   const [airQualityData, setAirQualityData] = useState(null)
   const [hourlyForecast, setHourlyForecast] = useState(null)
+  const [weeklyForecast, setWeeklyForecast] = useState(null)
 
   useEffect(() => {
     fetchWeatherData(city)
-    // fetchAirQualityData(city)
   }, [city])
   
   const fetchAirQualityData = (lat, lon) => {
@@ -29,6 +29,49 @@ function App() {
     .catch(err => console.log('Error fetching Air Quality Data', err))
   }
 
+  const fetchWeeklyForecast = async (lat, lon) => {
+    try{
+      const APIKey = import.meta.env.VITE_API_KEY
+      const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
+      const forecastJson = await forecastRes.json() 
+      const forecastList = forecastJson.list
+
+      const groupedByDate = {}
+        forecastList.forEach((item) => {
+        const date = item.dt_txt.split(" ")[0]
+        if (!groupedByDate[date]) {
+          groupedByDate[date] = []
+        }
+        groupedByDate[date].push(item)
+      })
+
+      const weekly = Object.values(groupedByDate).map((dayGroup) => {
+        const noonForecast = dayGroup.reduce((prev, curr) => {
+          return Math.abs(new Date(curr.dt_txt).getHours() - 12) <  Math.abs(new Date(prev.dt_txt).getHours() - 12) ? curr : prev
+        })
+        return noonForecast
+      })
+
+      setWeeklyForecast(weekly.slice(0,5))
+    } catch(err){
+      console.log('Error fetching Weekly Forecast', err)
+    }
+  }
+
+  const fetchHourlyForecast = async (lat, lon) => {
+    try {
+      const APIKey = import.meta.env.VITE_API_KEY
+      const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
+      const forecastJson = await forecastRes.json() 
+
+      setHourlyForecast(forecastJson.list.slice(0, 8))
+      console.log(forecastJson.list.slice(0, 8));
+
+    } catch (error) {
+      console.log('Error fetching Hourly Forecast', err)
+    }
+  }
+
   const fetchWeatherData = async () => {
     try{
       const APIKey = import.meta.env.VITE_API_KEY
@@ -36,17 +79,12 @@ function App() {
       const weatherJson = await weatherRes.json()
       setWeatherData(weatherJson)
       console.log(JSON.stringify(weatherJson))
+
       const {lat, lon} = weatherJson.coord
       fetchAirQualityData(lat, lon)
-
-      const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
-      const forecastJson = await forecastRes.json() 
-
-      setHourlyForecast(forecastJson.list.slice(0, 8))
-      console.log(forecastJson.list.slice(0, 8));
-
-    }
-    catch(err){
+      fetchWeeklyForecast(city)
+      fetchHourlyForecast(lat, lon)
+    } catch(err){
       console.log('Error fetching Weather Data', err)
     }
   }
@@ -64,7 +102,12 @@ function App() {
           <MainWeather weatherData={weatherData} />
         </div>
         <div className='today-and-highlights-container'>
-          <TodayForecast hourlyForecast={hourlyForecast} weatherData={weatherData} airQualityData={airQualityData}/>
+          <TodayForecast 
+          hourlyForecast={hourlyForecast} 
+          weatherData={weatherData} 
+          airQualityData={airQualityData}
+          weeklyForecast={weeklyForecast}
+          />
         </div>
       </div>
       

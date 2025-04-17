@@ -10,6 +10,7 @@ function Searchbar({onSearch}) {
     const handleSearchClick = () => {
         if(searchCity.trim().length == '') return
         onSearch(searchCity)
+        setSearchCity('')
     }
   return (
     <nav className='navbar'>
@@ -28,6 +29,7 @@ function Searchbar({onSearch}) {
             }}
             value={searchCity}
             onChange={(e) => setSearchCity(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' ? handleSearchClick() : null}
             />
             <SearchOutlinedIcon 
             variant="outlined"

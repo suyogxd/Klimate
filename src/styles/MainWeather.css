@@ -5,6 +5,11 @@
     align-items: center;
     justify-content: center;
   }
+
+  .nav-and-main-weather-container {
+    padding-bottom: 30px;
+  }
+
   
   .divider{
     border: 1px solid #828282;
@@ -19,7 +24,14 @@
   .weather-icon {
     height: 250px;
     width: 250px;
-    padding-left: 55px;
+    padding-left: 100px;
+  }
+
+  .main-weather-container {
+    margin-top: 20px;
+    border-radius: 20px;
+    border:none;
+    box-shadow: 0px 0px 10px rgba(139, 165, 186, 0.5);
   }
   
   @media (max-width: 768px) {
