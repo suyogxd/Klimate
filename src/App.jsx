@@ -32,7 +32,7 @@ function App() {
   const fetchWeeklyForecast = async (lat, lon) => {
     try{
       const APIKey = import.meta.env.VITE_API_KEY
-      const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
+      const forecastRes = await fetch (`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
       const forecastJson = await forecastRes.json() 
       const forecastList = forecastJson.list
 
@@ -61,7 +61,7 @@ function App() {
   const fetchHourlyForecast = async (lat, lon) => {
     try {
       const APIKey = import.meta.env.VITE_API_KEY
-      const forecastRes = await fetch (`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
+      const forecastRes = await fetch (`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${APIKey}`)
       const forecastJson = await forecastRes.json() 
 
       setHourlyForecast(forecastJson.list.slice(0, 8))
@@ -75,7 +75,7 @@ function App() {
   const fetchWeatherData = async () => {
     try{
       const APIKey = import.meta.env.VITE_API_KEY
-      const weatherRes = await fetch (`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+      const weatherRes = await fetch (`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
       const weatherJson = await weatherRes.json()
       setWeatherData(weatherJson)
       console.log(JSON.stringify(weatherJson))
