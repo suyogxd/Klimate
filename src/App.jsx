@@ -9,7 +9,7 @@ import TodayForecast from './components/TodayForecast'
 function App() {
 
   const [weatherData, setWeatherData] = useState(null)
-  const [city, setCity] = useState('London')
+  const [city, setCity] = useState('Kathmandu')
   const [airQualityData, setAirQualityData] = useState(null)
   const [hourlyForecast, setHourlyForecast] = useState(null)
   const [weeklyForecast, setWeeklyForecast] = useState(null)

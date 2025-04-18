@@ -11,12 +11,12 @@ const WeatherHighlights = ({ weatherData, airQualityData }) => {
   const airQualityIndex = airQualityData?.main?.aqi || 'N/A';
   const getAQIIcon = (aqi) => {
     switch (aqi) {
-      case 1: return './assets/aqi-good.svg';
-      case 2: return './assets/aqi-fair.svg';
-      case 3: return './assets/aqi-moderate.svg';
-      case 4: return './assets/aqi-poor.svg';
-      case 5: return './assets/aqi-verypoor.svg';
-      default: return './assets/aqi-good.svg';
+      case 1: return '/aqi-good.svg';
+      case 2: return '/aqi-fair.svg';
+      case 3: return '/aqi-moderate.svg';
+      case 4: return '/aqi-poor.svg';
+      case 5: return '/aqi-verypoor.svg';
+      default: return '/aqi-good.svg';
     }
   };
 
@@ -42,10 +42,10 @@ const WeatherHighlights = ({ weatherData, airQualityData }) => {
 
   return (
     <div className='weather-highlight-card'>
-      {highlightCard("Humidity", <img src='./assets/humidity.svg' alt="Humidity" style={{height: '60px', width: '60px'}} />,`${humidity}%`)}
-      {highlightCard("Wind Speed", <img src='./assets/windspeed.svg' alt="Wind Speed" style={{height: '60px', width: '60px'}} />, `${windSpeed} m/s`)}
-      {highlightCard("Sunrise", <img src='./assets/sunrise.svg' alt="Sunrise" style={{height: '60px', width: '60px'}} />, `${sunrise}`)}
-      {highlightCard("Sunset", <img src='./assets/sunset.svg' alt="Sunset" style={{height: '60px', width: '60px'}} />, `${sunset}`)}
+      {highlightCard("Humidity", <img src='/humidity.svg' alt="Humidity" style={{height: '60px', width: '60px'}} />,`${humidity}%`)}
+      {highlightCard("Wind Speed", <img src='/windspeed.svg' alt="Wind Speed" style={{height: '60px', width: '60px'}} />, `${windSpeed} m/s`)}
+      {highlightCard("Sunrise", <img src='/sunrise.svg' alt="Sunrise" style={{height: '60px', width: '60px'}} />, `${sunrise}`)}
+      {highlightCard("Sunset", <img src='/sunset.svg' alt="Sunset" style={{height: '60px', width: '60px'}} />, `${sunset}`)}
       {highlightCard("Air Quality",  <img src={getAQIIcon(airQualityIndex)} alt="Air Quality" style={{height: '60px', width: '60px'}} />, getAQIText(airQualityIndex))}
     </div>
 
